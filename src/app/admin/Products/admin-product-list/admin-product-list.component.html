@@ -1,0 +1,41 @@
+<div class="display-area">
+  <h4 class="text-center heading">PRODUCT DETAILS</h4>
+  <h5 class="text-center" *ngIf="showMessage">No Product data Available</h5>
+  <table class="table" *ngIf="!showMessage || !showSpinner">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">PRODUCT NAME</th>
+        <th scope="col">PRICE</th>
+      </tr>
+    </thead>
+    <div *ngIf="showSpinner">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <tbody>
+      <tr *ngFor="let product of allProducts; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <th scope="row">{{ product.title }}</th>
+        <td>{{ product.price | currency : "INR" }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            (click)="navigateToProductDetails(product.id)"
+          >
+            View Details
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            (click)="onEditProduct(product.id)"
+          >
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

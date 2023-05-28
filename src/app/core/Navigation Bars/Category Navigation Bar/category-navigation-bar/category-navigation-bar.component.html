@@ -1,0 +1,35 @@
+<!-- Collapse button -->
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="all-product text-center">
+      <button
+        class="btn btn-outline-secondary all-product-button"
+        (click)="navigateToProductList()"
+      >
+        All Products
+      </button>
+    </div>
+    <div class="flex-box">
+      <div class="categoryList" *ngFor="let category of categoryList">
+        <div>
+          <a
+            class="dropdown-item"
+            (click)="navigateToProductListByCategory(category.name)"
+            ><span class="category" appTextBlue>{{
+              category.name | uppercase
+            }}</span></a
+          >
+        </div>
+        <div>
+          <a
+            *ngFor="let subcategory of category.subcategories"
+            (click)="navigateToProductListBySubCategory(subcategory)"
+            class="subcategory dropdown-item"
+          >
+            {{ subcategory | uppercase }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

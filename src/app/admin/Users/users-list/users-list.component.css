@@ -1,0 +1,22 @@
+.fetchButton {
+  font-size: 20px;
+}
+.button {
+  width: 200px;
+  height: 50px;
+  margin: 10px auto;
+}
+.btn-primary:hover {
+  background-color: rgb(67, 67, 233);
+}
+.table {
+  background-color: aliceblue;
+  margin: 20px auto;
+  width: 720px;
+}
+.heading {
+  margin: 20px;
+}
+.spinner-border {
+  margin-left: 300px;
+}

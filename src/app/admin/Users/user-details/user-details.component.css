@@ -1,0 +1,21 @@
+.card-img-top {
+  width: 600px;
+  height: 350px;
+  display: block;
+  margin: 10px auto;
+}
+img:hover {
+  width: 650px;
+  height: 400px;
+  border: 2px black;
+  border-style: dashed;
+}
+.card-title {
+  font-size: 30px;
+}
+.card-text {
+  font-size: 30px;
+}
+span {
+  font-size: 32px;
+}

@@ -1,0 +1,32 @@
+<!-- Category-list -->
+<div class="card">
+  <h1 class="text-center heading">Category List</h1>
+  <h1 class="text-center spinner" *ngIf="showSpinner">Loading....</h1>
+  <div
+    class="categoryList"
+    *ngFor="let category of categoryListData; index as index"
+  >
+    <div>
+      <p class="dropdown-item">
+        <span class="category" appTextBlue
+          >CATEGORY{{ index + 1 }}: {{ category.name | uppercase }}</span
+        >
+      </p>
+    </div>
+    <div>
+      <p
+        class="text-center"
+        *ngFor="let subcategory of category.subcategories; index as indexx"
+        class="subcategory dropdown-item"
+      >
+        {{ subcategory | uppercase }}
+      </p>
+    </div>
+    <button
+      class="btn btn-outline-primary"
+      (click)="onEditCategorySelect(category.id)"
+    >
+      Edit
+    </button>
+  </div>
+</div>

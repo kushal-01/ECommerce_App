@@ -1,0 +1,127 @@
+<div class="login-body">
+  <!-- Form Container -->
+  <div class="container mt-3 mb-3">
+    <div class="form-area">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <!-- Div Showing Submit Success Message  -->
+        <div class="alert alert-success" *ngIf="showLoginMessage">
+          Login Successfully
+        </div>
+        <!-- Div Showing User Not Matched Message  -->
+        <div class="alert alert-success" *ngIf="showInvalidUserMessage">
+          Invalid Email-Id or Password
+        </div>
+        <!-- Div Showing User Not Matched Message  -->
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email">ENTER EMAIL-ID</label>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': email?.touched && email?.invalid }"
+          />
+          <!-- Email Field Validations -->
+          <div *ngIf="email?.errors?.['required']">
+            <div
+              class="alert alert-danger"
+              *ngIf="email?.touched && email?.invalid"
+            >
+              Email is Required
+            </div>
+          </div>
+          <div *ngIf="email?.errors?.['pattern']">
+            <div
+              class="alert alert-danger"
+              *ngIf="email?.touched && email?.invalid"
+            >
+              Correct Email Format is: xyz@gmail.com.
+            </div>
+          </div>
+        </div>
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">ENTER PASSWORD</label>
+          <input
+            [type]="passwordType"
+            placeholder="Enter Password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid': password?.touched && password?.invalid
+            }"
+          />
+          <span class="eye">
+            <i [class]="eyeIcon" id="togglePassword" (click)="togglePassword()"
+              >{{ eyeIcon == "fa fa-eye" ? "Show" : "Hide" }} Password</i
+            >
+          </span>
+          <!-- Password Field Validations -->
+          <!-- Required Validation -->
+          <div *ngIf="password?.errors?.['required']">
+            <div
+              class="alert alert-danger"
+              *ngIf="password?.touched && password?.invalid"
+            >
+              Password is Required
+            </div>
+          </div>
+          <!-- Minlength Validation  -->
+          <div *ngIf="password?.errors?.['minlength']">
+            <div
+              class="alert alert-danger"
+              *ngIf="password?.touched && password?.invalid"
+            >
+              Password should be 6 characters long.
+            </div>
+          </div>
+          <!-- Pattern Validation -->
+          <div *ngIf="password?.errors?.['pattern']">
+            <div
+              class="alert alert-danger"
+              *ngIf="password?.touched && password?.invalid"
+            >
+              Password should contain atleast one number, lowercase and
+              uppercase letter and atleast 6 digit long.
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <button
+          [disabled]="loginForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Login
+        </button>
+      </form>
+      <!-- Signup Button -->
+      <div class="signupText text-center mt-3 mb-2">Not a Registered User</div>
+      <div class="text-center">
+        <button
+          class="btn btn-outline-primary m-2"
+          (click)="navigateToRegisterForm()"
+        >
+          SignUp
+        </button>
+      </div>
+
+      <!-- HomePage Button -->
+      <div class="signupText text-center mt-3 mb-2">Not Interested</div>
+      <div class="text-center">
+        <button
+          class="btn btn-outline-primary m-2"
+          (click)="navigateToHomePage()"
+        >
+          Go To Home Page
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div *ngIf="isUserLoggedIn">
+  <!-- Loading Message -->
+  <div class="text-center loadingMessage" *ngIf="showLoadingMessage">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-light" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- Order List -->
+  <ng-container
+    *ngIf="currentUserOrder.length != 0 && !this.showLoadingMessage"
+  >
+    <div class="container">
+      <div class="card-table">
+        <div class="cart-product">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let order of currentUserOrder[0].products;
+                  let i = index
+                "
+              >
+                <th>{{ i + 1 }}</th>
+                <td class="product-view">
+                  {{ order.title }}
+                </td>
+                <td class="w-25" class="product-view">
+                  {{ order.description | wordWrap : 40 }}
+                </td>
+                <th class="w-12" class="product-view">
+                  {{ order.price | currency : "INR" }}
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <button
+                    routerLink="/products"
+                    class="btn btn-outline-primary button-row"
+                  >
+                    Shop More
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container
+    *ngIf="currentUserOrder.length == 0 && !this.showLoadingMessage"
+  >
+    <div class="container">
+      <div class="text-center my-5">
+        <h4 class="mb-20">You have no Order Yet</h4>
+        <h6 class="mb-20">Shop Now and Order Products</h6>
+        <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<!-- Html Block which will show if user is not logged in -->
+<div *ngIf="!isUserLoggedIn">
+  <h1 class="text-center login-heading" appTextBlue>Please Login</h1>
+  <h2 class="text-center login-heading" appTextBlue>
+    Login to view Your Orders
+  </h2>
+  <img src="../../../../assets/cart-list1.png" class="cart-list-image" alt="" />
+  <button
+    class="btn btn-outline-primary login-button"
+    (click)="navigateToLoginPage()"
+  >
+    Login Now
+  </button>
+</div>

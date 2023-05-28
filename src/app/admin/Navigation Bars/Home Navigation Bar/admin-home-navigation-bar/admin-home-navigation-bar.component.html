@@ -1,0 +1,46 @@
+<nav class="navbar navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <!-- Admin Home Page Button -->
+    <button class="navbar-brand" (click)="navigateToAdminHomePage()">
+      ADMIN PANEL
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navigation Links -->
+      <div class="navigation-links">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- User Navigation Link -->
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              aria-current="page"
+              (click)="navigateToShowUsersPage()"
+            >
+              All Users
+            </button>
+          </li>
+          <!-- Product Navigation Link -->
+          <li class="nav-item">
+            <button class="nav-link" (click)="navigateToProductPage()">
+              All Products
+            </button>
+          </li>
+          <!-- Orders Navigation Link -->
+          <li class="nav-item">
+            <button class="nav-link" (click)="navigateToOrderPage()">
+              All Orders
+            </button>
+          </li>
+          <!-- Category Navigation Link -->
+          <li class="nav-item">
+            <button class="nav-link" (click)="navigateToCategoryPage()">
+              All Categories
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="onLogout()">LOGOUT</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

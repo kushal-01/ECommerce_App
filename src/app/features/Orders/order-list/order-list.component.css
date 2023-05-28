@@ -1,0 +1,37 @@
+.login-heading {
+  margin: 40px;
+}
+.table {
+  background-color: #dfe5eb;
+}
+.login-button {
+  margin-left: 630px;
+}
+.cart-list-image {
+  display: block;
+  margin: 20px auto;
+}
+.card-table {
+  margin: 20px;
+}
+.button-row {
+  margin-left: 160px;
+}
+.btn-outline-primary {
+  width: 120px;
+  height: 55px;
+}
+.mb-20 {
+  font-size: 40px;
+  margin: 40px;
+}
+.grand-total {
+  margin: 20px auto;
+}
+.product-view {
+  cursor: pointer;
+}
+.loadingMessage {
+  margin-top: 40px;
+  font-size: 100px;
+}

@@ -1,0 +1,87 @@
+<nav class="navbar navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <button class="navbar-brand" (click)="navigateToHomePage()">
+      E-COMMERCE
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Search Bar -->
+      <form
+        #searchForm="ngForm"
+        class="d-flex"
+        (ngSubmit)="onSearch(searchForm)"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search for categories, Products"
+          aria-label="Search"
+          name="searchValue"
+          ngModel
+          #searchValue="ngModel"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <!-- Navigation Links -->
+      <div class="navigation-links">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Category Navigation Link -->
+          <li class="nav-item">
+            <!-- Category Button with Collapse Menu-->
+            <div>
+              <button
+                class="nav-link"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                CATEGORY
+              </button>
+            </div>
+          </li>
+          <!-- LoginNavigation Link -->
+          <li class="nav-item" *ngIf="!userIsLoggedIn">
+            <button
+              class="nav-link"
+              aria-current="page"
+              (click)="navigateToLoginPage()"
+            >
+              Login
+            </button>
+          </li>
+          <!-- LogoutNavigation Link -->
+          <li class="nav-item" *ngIf="userIsLoggedIn">
+            <button class="nav-link" aria-current="page" (click)="onLogout()">
+              Logout
+            </button>
+          </li>
+          <!-- Hello User Navigation Link -->
+          <li class="nav-item">
+            <button class="nav-link name-link" aria-current="page" appTextBlue>
+              HELLO {{ userName | uppercase }}
+            </button>
+          </li>
+          <!-- WishlistNavigation Link -->
+          <li>
+            <button (click)="navigateToWishList()">
+              <span class="wishlist">&#x2661;</span> ({{ totalWishlistItem }})
+            </button>
+          </li>
+          <!-- CartNavigation Link -->
+          <li class="nav-item">
+            <button class="nav-link" (click)="navigateToCartList()">
+              <i class="fas fa-shopping-cart"></i> CART({{ totalCartItem }})
+            </button>
+          </li>
+          <!--  My Orders Navigation Link -->
+          <li class="nav-item">
+            <button class="nav-link" (click)="navigateToOrderList()">
+              Orders
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

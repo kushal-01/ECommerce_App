@@ -1,0 +1,72 @@
+<h1 class="text-center">Add/Edit Category</h1>
+<!-- Form Container -->
+<div class="container mt-3 mb-3">
+  <div class="form-area">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <!-- Div Showing Submit Success Message  -->
+      <div class="alert alert-success" *ngIf="showAddMessage">
+        Category Added Successfully in Database
+      </div>
+      <!-- Div Showing Update Success Message  -->
+      <div class="alert alert-success" *ngIf="showUpdateMessage">
+        Category Updated Successfully in Database
+      </div>
+      <!-- categoryName Field -->
+      <div class="form-group">
+        <label for="category"><h5>ENTER CATEGORY NAME:</h5></label>
+        <input
+          type="text"
+          placeholder="Enter Category Name"
+          id="category"
+          class="form-control"
+          formControlName="name"
+        />
+      </div>
+      <!-- Subcategory Field -->
+      <div formArrayName="subcategories">
+        <button
+          class="btn btn-success"
+          type="button"
+          (click)="onAddSubcategorySelect()"
+        >
+          <h5>Add Subcategory:</h5>
+        </button>
+        <div
+          class="form-group"
+          *ngFor="let subcategoryControl of controls; let i = index"
+        >
+          <input
+            type="text"
+            placeholder="Enter Subcategory Name"
+            class="form-control"
+            [formControlName]="i"
+          />
+          <button
+            class="btn btn-success"
+            (click)="removeSpecificSubcategory(i)"
+          >
+            Clear Subcategory
+          </button>
+        </div>
+      </div>
+      <!-- AddCategory Button -->
+      <button
+        *ngIf="!showUpdateButton"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="categoryForm.invalid"
+      >
+        Add
+      </button>
+      <!-- Update Category Button -->
+      <button
+        *ngIf="showUpdateButton"
+        type="button"
+        class="btn btn-primary"
+        (click)="updateCategoryInDatabase()"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>

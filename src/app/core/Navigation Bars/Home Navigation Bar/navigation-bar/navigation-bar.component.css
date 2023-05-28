@@ -1,0 +1,45 @@
+/* Navigation Bar styling Here */
+.navbar {
+  box-sizing: border-box;
+}
+.nav-item {
+  padding: 0px 8px;
+}
+button {
+  border: none;
+  background-color: #bbcddb;
+}
+.navbar {
+  background-color: #bbcddb;
+}
+.nav-link:hover {
+  box-shadow: 0 0 0 1px #504e4e;
+  border-radius: 8px;
+}
+.active {
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+.badge {
+  margin: 0px;
+}
+.navigation-links {
+  margin-left: 100px;
+}
+input {
+  margin-left: 40px;
+  width: 350px;
+}
+/* Category Menu Styling Here */
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.categoryList {
+  margin: 4px 80px;
+}
+.wishlist {
+  margin: 0px 0px;
+  font-size: 30px;
+  height: 10px;
+}

@@ -1,0 +1,17 @@
+<div class="card mb-3">
+  <img
+    src="../../../../assets/user.png"
+    class="text-center card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <div class="card-title text-center">
+      <span appTextBlue>NAME: </span>
+      {{ singleUserDetails.fullName | uppercase }}
+    </div>
+    <div class="card-text text-center">
+      <span appTextBlue>EMAIL: </span>
+      {{ singleUserDetails.email | uppercase }}
+    </div>
+  </div>
+</div>

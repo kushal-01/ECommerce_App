@@ -1,0 +1,117 @@
+<div class="card mb-3" *ngIf="!productNotExist">
+  <img [src]="productThumbnail" class="text-center card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ productTitle }}</h5>
+    <h5 class="card-text text-center">
+      {{ productDescription }}
+    </h5>
+    <div class="text-center price">
+      Price: {{ productPrice | currency : "INR" }}
+    </div>
+    <h5 class="card-text">
+      <span>RATING: </span>
+      {{ productRating }}
+    </h5>
+    <h5 class="card-text">
+      <span>CATEGORY: </span>
+      {{ productCategory }}
+    </h5>
+    <h5 class="card-text">
+      <span>BRAND: </span>
+      {{ productBrand }}
+    </h5>
+  </div>
+  <!-- Buttons -->
+  <div class="buttons text-center">
+    <button
+      class="btn btn-primary mt-3"
+      (click)="onAddToCart(singleProductDetails)"
+    >
+      <i class="fas fa-shopping-cart"></i> Add to Cart
+    </button>
+    <button
+      class="btn btn-success mt-3"
+      (click)="onAddToWishlist(singleProductDetails)"
+    >
+      <i class="fas fa-heart"></i> Add To Wishlist
+    </button>
+  </div>
+</div>
+<!-- Similar Products -->
+<h2 class="text-center similar-product-heading" *ngIf="!productNotExist">
+  You May Also Like:
+</h2>
+<div class="flex-box" *ngIf="!productNotExist">
+  <!-- Showing Spinner while Similar Products are Loading -->
+  <div *ngIf="showSpinner" class="spinner">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- Showing Similar Products Here -->
+  <div
+    class="card flex-item cardTransform"
+    *ngFor="let product of similarProducts"
+  >
+    <div class="row">
+      <div>
+        <div class="card">
+          <!-- Image -->
+          <img
+            class="card-img"
+            [src]="product.thumbnail"
+            alt="Vans"
+            (click)="onViewDetailSelect(product.id)"
+          />
+          <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title" (click)="onViewDetailSelect(product.id)">
+              {{ product.title }}
+            </h4>
+            <!-- Description -->
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <div class="price text-success text-center">
+              <!-- Price -->
+              <h5 class="mt-4">
+                Price: {{ product.price | currency : "INR" }}
+              </h5>
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button
+                class="btn btn-outline-danger mt-3"
+                (click)="onAddToCart(product)"
+              >
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-success mt-3"
+                (click)="onAddToWishlist(product)"
+              >
+                <i class="fas fa-heart"></i> Add to Wishlist
+              </button>
+              <button
+                class="btn btn-outline-dark mt-3"
+                (click)="onViewDetailSelect(product.id)"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Html Code When Product Not Exists -->
+<div class="error-container">
+  <h1 *ngIf="productNotExist">
+    <div class="heading">Product Does Not Exists</div>
+    <img
+      class="text-center error-image"
+      src="../../../../assets/product-error.png"
+      alt=""
+    />
+  </h1>
+</div>

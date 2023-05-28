@@ -1,0 +1,44 @@
+.card {
+  background: linear-gradient(
+    90deg,
+    rgba(219, 237, 211, 1) 0%,
+    rgba(229, 242, 217, 1) 18%,
+    rgba(218, 240, 219, 1) 62%,
+    rgba(225, 244, 242, 1) 100%
+  );
+}
+.heading {
+  margin: 10px;
+}
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.categoryList {
+  margin: 8px 30px;
+}
+.category {
+  font-style: bold;
+  font-size: 22px;
+}
+.subcategory {
+  font-size: 16px;
+  margin: 4px 2px;
+}
+.dropdown-item {
+  cursor: pointer;
+}
+.subcategory {
+  cursor: pointer;
+}
+.btn {
+  width: 90px;
+  font-family: " Arial";
+  font-size: 20px;
+  margin: 10px 8px;
+}
+.spinner {
+  margin-top: 50px;
+  color: blue;
+}

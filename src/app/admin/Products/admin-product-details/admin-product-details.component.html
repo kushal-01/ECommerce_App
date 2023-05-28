@@ -1,0 +1,24 @@
+<div class="card mb-3">
+  <img [src]="productThumbnail" class="text-center card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ productTitle }}</h5>
+    <h5 class="card-text text-center">
+      {{ productDescription }}
+    </h5>
+    <div class="text-center price">
+      Price: {{ productPrice | currency : "INR" }}
+    </div>
+    <h5 class="card-text">
+      <span>RATING: </span>
+      {{ productRating }}
+    </h5>
+    <h5 class="card-text">
+      <span>CATEGORY: </span>
+      {{ productCategory }}
+    </h5>
+    <h5 class="card-text">
+      <span>BRAND: </span>
+      {{ productBrand }}
+    </h5>
+  </div>
+</div>

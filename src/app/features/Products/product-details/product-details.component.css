@@ -1,0 +1,102 @@
+.card-img-top {
+  width: 800px;
+  height: 400px;
+  display: block;
+  margin: 10px auto;
+}
+.card-img-top:hover {
+  width: 900px;
+  height: 450px;
+}
+.card-title {
+  font-size: 40px;
+}
+span {
+  font-size: 32px;
+}
+.price {
+  font-size: 35px;
+  color: blue;
+}
+.btn-primary {
+  margin: 20px;
+  width: 180px;
+  height: 60px;
+  font-size: 20px;
+}
+.btn-success {
+  margin: 20px;
+  width: 180px;
+  height: 65px;
+  font-size: 20px;
+}
+/* Similar Products */
+body {
+  padding: 2rem 0rem;
+}
+.like {
+  font-size: 1.5rem;
+}
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-item {
+  margin: 10px;
+}
+.row {
+  width: 450px;
+}
+img {
+  width: 380px;
+  height: 250px;
+}
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100ch;
+}
+.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100ch;
+}
+.cardTransform {
+  box-shadow: rgba(20, 20, 20, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(16, 17, 17, 0.35) 0px -2px 6px 0px inset;
+}
+.cardTransform:hover {
+  transform: scale(1.03);
+  transition: ease-in-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-img,
+.card-title {
+  cursor: pointer;
+}
+.btn {
+  margin: 5px;
+}
+.similar-product-heading {
+  color: blue;
+}
+.heading {
+  color: blue;
+  margin: 10px;
+  margin-left: 90px;
+}
+.error-image {
+  width: 600px;
+  height: 400px;
+}
+.error-container {
+  margin: 40px auto;
+  margin-left: 360px;
+}
+.spinner {
+  margin: 40px;
+  margin-left: 650px;
+}

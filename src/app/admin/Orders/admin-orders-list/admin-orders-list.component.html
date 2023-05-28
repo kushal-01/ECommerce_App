@@ -1,0 +1,47 @@
+<div>
+  <h2 class="text-center heading">ORDER DETAILS</h2>
+  <h2 class="text-center spinner" *ngIf="showSpinner">Loading....</h2>
+  <div *ngFor="let user of usersWhoOrdered; let i = index">
+    <h5 class="text-center heading">User {{ i + 1 }}</h5>
+    <h5 class="text-center">
+      <span class="text-blue"> Name: </span>{{ user.fullName }}
+    </h5>
+    <h5 class="text-center">
+      <span class="text-blue"> Email: </span> {{ user.email }}
+    </h5>
+    <div class="container">
+      <div class="card-table">
+        <div class="cart-product">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody
+              *ngFor="let order of allOrderData[i].products; let i = index"
+            >
+              <tr>
+                <th>{{ i + 1 }}</th>
+                <td class="product-view">
+                  {{ order.title }}
+                </td>
+                <td class="w-25" class="product-view">
+                  {{ order.description }}
+                </td>
+                <th class="w-12" class="product-view">
+                  {{ order.price | currency : "INR" }}
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>

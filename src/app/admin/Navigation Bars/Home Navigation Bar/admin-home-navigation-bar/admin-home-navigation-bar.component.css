@@ -1,0 +1,29 @@
+/* Navigation Bar styling Here */
+.navbar-brand:hover {
+  font-size: 21px;
+}
+.nav-item {
+  padding: 0px 16px;
+  margin: 0px 40px;
+}
+button {
+  border: none;
+  background-color: #bbcddb;
+}
+.navbar {
+  background-color: #bbcddb;
+}
+.nav-link:hover {
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+.active {
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+.badge {
+  margin: 0px;
+}
+.navigation-links {
+  margin: 0px auto;
+}

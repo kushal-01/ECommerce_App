@@ -1,0 +1,39 @@
+.card {
+  background: linear-gradient(
+    90deg,
+    rgba(219, 237, 211, 1) 0%,
+    rgba(229, 242, 217, 1) 18%,
+    rgba(218, 240, 219, 1) 62%,
+    rgba(225, 244, 242, 1) 100%
+  );
+}
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.categoryList {
+  margin: 4px 45px;
+}
+.category {
+  font-style: bold;
+  font-size: 22px;
+}
+.subcategory {
+  font-style: italic;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+.all-product-button {
+  width: 200px;
+  height: 50px;
+  font-family: " Arial";
+  font-size: 20px;
+  margin: 18px 20px;
+}
+.dropdown-item {
+  cursor: pointer;
+}
+.subcategory {
+  cursor: pointer;
+}

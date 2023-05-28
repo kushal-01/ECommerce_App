@@ -1,0 +1,326 @@
+<!-- Price Filter -->
+<div
+  class="form-group filter-div"
+  *ngIf="
+    !showLoadingMessage &&
+    ((showByCategory && productDataByCategory.length > 1) ||
+      (showBySubCategory && productDataBySubCategory.length > 1) ||
+      (showBySearchValue && productDataBySearchValue.length > 1) ||
+      (!showByCategory && !showBySubCategory && !showBySearchValue))
+  "
+>
+  <label for="category"><h5>Price Filter</h5></label>
+  <select
+    #selectMenu
+    (change)="onFilterChange()"
+    class="form-control filter-select"
+  >
+    <option selected>By Default</option>
+    <option>High To Low</option>
+    <option>Low To High</option>
+  </select>
+</div>
+<!-- Loading Message -->
+<div class="text-center loadingMessage" *ngIf="showLoadingMessage">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<!-- AllProducts Display -->
+<div
+  class="flex-box"
+  *ngIf="!showByCategory && !showBySubCategory && !showBySearchValue"
+>
+  <div
+    class="card flex-item cardTransform"
+    *ngFor="
+      let product of allProductData
+        | paginate
+          : {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }
+    "
+  >
+    <div class="row">
+      <div>
+        <div class="card">
+          <!-- Image -->
+          <img
+            class="card-img"
+            [src]="product.thumbnail"
+            alt="Vans"
+            (click)="onViewDetailSelect(product.id)"
+          />
+          <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title" (click)="onViewDetailSelect(product.id)">
+              {{ product.title }}
+            </h4>
+            <!-- Description -->
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <div class="price text-success text-center">
+              <!-- Price -->
+              <h5 class="mt-4">
+                Price: {{ product.price | currency : "INR" }}
+              </h5>
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button
+                class="btn btn-outline-danger mt-3"
+                (click)="onAddToCart(product)"
+              >
+                <i class="fas fa-shopping-cart"></i>Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-success mt-3"
+                (click)="onAddToWishlist(product)"
+              >
+                <i class="fas fa-heart"></i>Add to Wishlist
+              </button>
+              <button
+                class="btn btn-outline-dark mt-3"
+                (click)="onViewDetailSelect(product.id)"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Product Display By Category -->
+<div class="flex-box" *ngIf="showByCategory">
+  <div
+    class="card flex-item cardTransform"
+    *ngFor="
+      let product of productDataByCategory
+        | paginate
+          : {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }
+    "
+  >
+    <div class="row">
+      <div>
+        <div class="card">
+          <!-- Image -->
+          <img
+            class="card-img"
+            [src]="product.thumbnail"
+            alt="Vans"
+            (click)="onViewDetailSelect(product.id)"
+          />
+          <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title" (click)="onViewDetailSelect(product.id)">
+              {{ product.title }}
+            </h4>
+            <!-- Description -->
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <div class="price text-success text-center">
+              <!-- Price -->
+              <h5 class="mt-4">
+                Price: {{ product.price | currency : "INR" }}
+              </h5>
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button
+                class="btn btn-outline-danger mt-3"
+                (click)="onAddToCart(product)"
+              >
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-success mt-3"
+                (click)="onAddToWishlist(product)"
+              >
+                <i class="fas fa-heart"></i> Add to Wishlist
+              </button>
+              <button
+                class="btn btn-outline-dark mt-3"
+                (click)="onViewDetailSelect(product.id)"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Product Display By SubCategory -->
+<div class="flex-box" *ngIf="showBySubCategory">
+  <div
+    class="card flex-item cardTransform"
+    *ngFor="
+      let product of productDataBySubCategory
+        | paginate
+          : {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }
+    "
+  >
+    <div class="row">
+      <div>
+        <div class="card">
+          <!-- Image -->
+          <img
+            class="card-img"
+            [src]="product.thumbnail"
+            alt="Vans"
+            (click)="onViewDetailSelect(product.id)"
+          />
+          <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title" (click)="onViewDetailSelect(product.id)">
+              {{ product.title }}
+            </h4>
+            <!-- Description -->
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <div class="price text-success text-center">
+              <!-- Price -->
+              <h5 class="mt-4">
+                Price: {{ product.price | currency : "INR" }}
+              </h5>
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button
+                class="btn btn-outline-danger mt-3"
+                (click)="onAddToCart(product)"
+              >
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-success mt-3"
+                (click)="onAddToWishlist(product)"
+              >
+                <i class="fas fa-heart"></i> Add to Wishlist
+              </button>
+              <button
+                class="btn btn-outline-dark mt-3"
+                (click)="onViewDetailSelect(product.id)"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Product Display By Search Value -->
+<h1
+  appTextBlue
+  class="text-center search-heading"
+  *ngIf="showBySearchValue && productDataBySearchValue.length == 0"
+>
+  No Products available At Present.
+</h1>
+<div class="flex-box" *ngIf="showBySearchValue">
+  <div
+    class="card flex-item cardTransform"
+    *ngFor="
+      let product of productDataBySearchValue
+        | paginate
+          : {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }
+    "
+  >
+    <div class="row">
+      <div>
+        <div class="card">
+          <!-- Image -->
+          <img
+            class="card-img"
+            [src]="product.thumbnail"
+            alt="Vans"
+            (click)="onViewDetailSelect(product.id)"
+          />
+          <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title" (click)="onViewDetailSelect(product.id)">
+              {{ product.title }}
+            </h4>
+            <!-- Description -->
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <div class="price text-success text-center">
+              <!-- Price -->
+              <h5 class="mt-4">
+                Price: {{ product.price | currency : "INR" }}
+              </h5>
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button
+                class="btn btn-outline-danger mt-3"
+                (click)="onAddToCart(product)"
+              >
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button
+                class="btn btn-outline-success mt-3"
+                (click)="onAddToWishlist(product)"
+              >
+                <i class="fas fa-heart"></i> Add to Wishlist
+              </button>
+              <button
+                class="btn btn-outline-dark mt-3"
+                (click)="onViewDetailSelect(product.id)"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div
+  class="d-flex w-100 my-2 mt-3 justify-content-center"
+  *ngIf="!showLoadingMessage && showPagination"
+>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>

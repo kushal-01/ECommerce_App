@@ -1,0 +1,188 @@
+<h1 class="text-center">Add/Edit Products</h1>
+<!-- Form Container -->
+<div class="container mt-3 mb-3">
+  <div class="form-area">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <!-- Div Showing Submit Success Message  -->
+      <div class="alert alert-success" *ngIf="showAddMessage">
+        Product Added Successfully in Database
+      </div>
+      <!-- Div Showing Update Success Message  -->
+      <div class="alert alert-success" *ngIf="showUpdateMessage">
+        Product Updated Successfully in Database
+      </div>
+      <!-- Title Field -->
+      <div class="form-group">
+        <label for="title"><h5>ENTER TITLE</h5></label>
+        <input
+          type="text"
+          placeholder="Enter Title Of Product"
+          id="title"
+          class="form-control"
+          formControlName="title"
+        />
+      </div>
+      <!-- Description Field -->
+      <div class="form-group">
+        <label for="description"><h5>ENTER DESCRIPTION</h5></label>
+        <input
+          type="text"
+          placeholder="Enter Description Of Product"
+          id="description"
+          class="form-control"
+          formControlName="description"
+        />
+      </div>
+      <!-- Brand Field -->
+      <div class="form-group">
+        <label for="brand"><h5>ENTER BRAND</h5></label>
+        <input
+          type="text"
+          placeholder="Enter Brand Of Product"
+          id="brand"
+          class="form-control"
+          formControlName="brand"
+        />
+      </div>
+      <!-- Category Field -->
+      <div class="form-group">
+        <label for="category"><h5>SELECT CATEGORY</h5></label>
+        <select
+          [(ngModel)]="selectedCategory"
+          formControlName="category"
+          (change)="onCategoryChange()"
+          class="form-control"
+        >
+          <option selected disabled [value]="'none'">categories</option>
+          <option
+            *ngFor="let category of categoryListData; let i = index"
+            [value]="category.name"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <!-- SubCategory Field -->
+      <div class="form-group">
+        <label for="subcategory"><h5>SELECT SUBCATEGORY</h5></label>
+        <select
+          [(ngModel)]="selectedSubCategory"
+          class="form-control"
+          formControlName="subcategory"
+        >
+          <option selected disabled [value]="'none'">Subcategories</option>
+          <option
+            *ngFor="let subcategory of filteredSubcategory; let i = index"
+            [value]="subcategory"
+          >
+            {{ subcategory }}
+          </option>
+        </select>
+      </div>
+      <!-- Price Field -->
+      <div class="form-group">
+        <label for="price"><h5>ENTER PRICE</h5></label>
+        <input
+          type="number"
+          placeholder="Enter Price Of Product"
+          id="price"
+          class="form-control"
+          formControlName="price"
+        />
+      </div>
+      <!-- Rating Field -->
+      <div class="form-group">
+        <label for="rating"><h5>ENTER RATING</h5></label>
+        <input
+          type="number"
+          placeholder="Enter Rating Of Product"
+          id="rating"
+          class="form-control"
+          formControlName="rating"
+        />
+      </div>
+      <!-- DiscountPercentage Field -->
+      <div class="form-group">
+        <label for="discountPercentage"
+          ><h5>ENTER DiscountPercentage</h5></label
+        >
+        <input
+          type="number"
+          placeholder="Enter Discount Percentage Of Product"
+          id="discountPercentage"
+          class="form-control"
+          formControlName="discountPercentage"
+        />
+      </div>
+      <!-- Id Field -->
+      <div class="form-group">
+        <label for="id"><h5>ENTER Id</h5></label>
+        <input
+          type="text"
+          placeholder="Enter Id Of Product"
+          id="id"
+          class="form-control"
+          formControlName="id"
+        />
+      </div>
+      <!-- Stock Field -->
+      <div class="form-group">
+        <label for="stock"><h5>ENTER STOCK</h5></label>
+        <input
+          type="number"
+          placeholder="Enter Stock Of Product"
+          id="stock"
+          class="form-control"
+          formControlName="stock"
+        />
+      </div>
+      <!-- Image Field -->
+      <div class="form-group">
+        <label for="images"><h5>ENTER Image</h5></label>
+
+        <input
+          type="file"
+          id="images"
+          class="form-control"
+          formControlName="images"
+          (change)="onImageFileSelected($event)"
+        />
+      </div>
+      <div class="alert alert-info" *ngIf="showImageUploadMessage">
+        Uploading..
+      </div>
+      <!-- Thumbnail Field -->
+      <div class="form-group">
+        <label for="thumbnail"><h5>ENTER Thumbnail</h5></label>
+
+        <input
+          type="file"
+          id="thumbnail"
+          class="form-control"
+          formControlName="thumbnail"
+          (change)="onThumbnailFileSelected($event)"
+        />
+      </div>
+      <div class="alert alert-info" *ngIf="showThumbnailUploadMessage">
+        Uploading..
+      </div>
+      <!-- AddCategory Button -->
+      <button
+        *ngIf="!showUpdateButton"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!productForm.valid"
+      >
+        Add Product
+      </button>
+      <button
+        *ngIf="showUpdateButton"
+        type="button"
+        class="btn btn-primary"
+        (click)="updateProductInDatabase()"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
